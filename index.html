@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Flow Factory | Disquera & Estudio de Producción Musical</title>
+<meta name="description" content="Flow Factory: disquera y estudio de producción musical en Rionegro, Antioquia. Producción, mezcla, masterización y distribución digital para artistas emergentes.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b12;--bg2:#12121c;--card:#171724;--text:#f3f2fa;--muted:#a3a1b8;--accent:#8b3dff;--accent2:#c04dff;--line:#26263a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.04em;font-weight:400;line-height:1.05}
+.container{width:min(1120px,92%);margin-inline:auto}
+section{padding:96px 0}
+.eyebrow{color:var(--accent2);font-weight:600;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.title{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:40px}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(11,11,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em}
+.brand img{height:34px;width:auto}
+.menu{display:flex;gap:20px;list-style:none;font-size:.9rem;color:var(--muted)}
+.menu a:hover{color:var(--text)}
+.menu .cta{color:#fff;background:var(--accent);padding:8px 16px;border-radius:999px}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+/* Hero */
+#inicio{min-height:100vh;display:flex;align-items:center;padding-top:120px;
+  background:radial-gradient(900px 500px at 80% 10%,rgba(139,61,255,.35),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(192,77,255,.18),transparent 60%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.place{color:var(--muted);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase}
+.tag{display:inline-block;margin:16px 0 8px;color:var(--accent2);font-weight:700;letter-spacing:.3em;font-size:.85rem}
+h1{font-size:clamp(3rem,8vw,5.8rem);margin-bottom:20px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);max-width:560px;margin-bottom:32px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 26px;border-radius:999px;font-weight:600;border:1px solid var(--accent);transition:.2s;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent2);border-color:var(--accent2)}
+.btn.ghost{background:transparent;color:var(--text)}
+.btn.ghost:hover{background:rgba(139,61,255,.15)}
+.hero-art{display:flex;justify-content:center}
+.hero-art img{width:min(320px,80%);filter:drop-shadow(0 0 60px rgba(139,61,255,.55))}
+
+/* Cards */
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.25s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{font-size:1.6rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.num{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgba(139,61,255,.18);color:var(--accent2);font-weight:700;margin-bottom:16px}
+#nosotros,#lanzamientos,#proyecto{background:var(--bg2)}
+.values{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.values span{padding:8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.9rem}
+
+/* Releases */
+.cover{aspect-ratio:1;border-radius:14px;margin-bottom:16px;display:grid;place-items:center;font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,255,255,.9);overflow:hidden;position:relative}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c1{background:linear-gradient(135deg,#ff4d6d,#8b3dff)}
+.c2{background:linear-gradient(135deg,#1d1d3a,#8b3dff)}
+.c3{background:linear-gradient(135deg,#ffb347,#c04dff)}
+.c4{background:linear-gradient(135deg,#00c6a7,#5a2dff)}
+.genre{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.release h3{font-size:1.5rem;margin:4px 0 2px}
+.release p,.release small{color:var(--muted)}
+
+/* Team */
+.member{text-align:center}
+.avatar{width:120px;height:120px;border-radius:50%;margin:0 auto 16px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));font-family:'Bebas Neue',sans-serif;font-size:2.4rem}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.role{color:var(--accent2);font-weight:600;font-size:.9rem;margin-bottom:10px}
+.member a{display:inline-block;margin-top:10px;font-size:.85rem;color:var(--muted);word-break:break-all}
+.member a:hover{color:var(--text)}
+
+/* Project */
+.socials{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.socials a{padding:12px 22px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:600}
+.socials a:hover{border-color:var(--accent);color:var(--accent2)}
+
+/* Form */
+form{display:grid;gap:14px;max-width:640px}
+input,textarea,select{width:100%;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);font:inherit}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);border-color:transparent}
+textarea{min-height:130px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:.85rem}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}.hero-art{order:-1}.hero-art img{width:180px}
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .burger{display:block}
+  .menu{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:20px 4%;gap:16px;border-bottom:1px solid var(--line)}
+  .menu.open{display:flex}
+}
+@media(max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}section{padding:72px 0}}
+
+/* Beats reproducibles */
+.release{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.release.playing{border-color:var(--accent2);box-shadow:0 0 0 1px var(--accent2),0 10px 40px rgba(139,61,255,.35)}
+.playbtn{position:absolute;right:12px;bottom:12px;width:52px;height:52px;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);transition:.2s;z-index:2}
+.release:hover .playbtn{transform:scale(1.08);background:var(--accent2)}
+.playbtn svg{width:22px;height:22px;fill:#fff}
+.playbtn .i-pause{display:none}
+.release.playing .i-play{display:none}
+.release.playing .i-pause{display:block}
+.eq{display:none;gap:3px;align-items:flex-end;height:18px;position:absolute;left:14px;bottom:14px;z-index:2}
+.release.playing .eq{display:flex}
+.eq i{width:4px;height:4px;background:#fff;border-radius:2px;animation:eq .8s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}.eq i:nth-child(4){animation-delay:.1s}
+@keyframes eq{0%,100%{height:4px}50%{height:18px}}
+.hint{color:var(--muted);margin:-24px 0 32px;font-size:.95rem}
+
+/* Artistas */
+.g5{grid-template-columns:repeat(5,1fr)}
+.artist{padding:0;overflow:hidden;text-align:center}
+.photo{aspect-ratio:1;position:relative;display:grid;place-items:center;font-family:'Bebas Neue',sans-serif;font-size:3.2rem;background:linear-gradient(135deg,var(--accent),#2a0b5e)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.artist h3{font-size:1.35rem;margin:14px 0 2px}
+.artist p{padding:0 10px 16px;font-size:.85rem}
+.team2{max-width:760px;margin-inline:auto}
+@media(max-width:900px){.g5{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.g5{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#inicio" class="brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'">FLOW FACTORY</a>
+    <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#lanzamientos">Lanzamientos</a></li>
+      <li><a href="#artistas">Artistas</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#proyecto">Proyecto SENA</a></li>
+      <li><a href="#contacto" class="cta">Enviar Demo</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <p class="place">Rionegro, Antioquia | I.E. Josefina Muñoz - SENA</p>
+      <span class="tag">MUSIC IS THE PRODUCT</span>
+      <h1>DONDE NACE EL FUTURO DEL <span>FLOW URBAN</span></h1>
+      <p class="lead">Impulsamos a los artistas emergentes brindando servicios integrales de producción musical, desarrollo de imagen, mezcla, masterización y distribución digital profesional.</p>
+      <div class="btns">
+        <a class="btn primary" href="#lanzamientos">Escuchar Beats</a>
+        <a class="btn ghost" href="#contacto">Enviar tu Demo</a>
+      </div>
+    </div>
+    <div class="hero-art"><img src="images/logo.png" alt="Logo de Flow Factory" onerror="this.parentElement.style.display='none'"></div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="container">
+    <p class="eyebrow">Identidad Corporativa</p>
+    <h2 class="title">Sobre Flow Factory</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Misión</h3><p>Brindar a los artistas emergentes servicios integrales de producción musical, desarrollo de imagen y promoción digital, contribuyendo al crecimiento de sus carreras y fortaleciendo la cultura musical local.</p></div>
+      <div class="card"><h3>Visión</h3><p>Ser reconocida en los próximos cinco años como una de las disqueras independientes más innovadoras y confiables de la región, destacándose por el impulso al talento emergente y la calidad de sus servicios musicales.</p></div>
+    </div>
+    <div class="card" style="margin-top:20px">
+      <h3>Valores Corporativos</h3>
+      <div class="values"><span>Trabajo en Equipo</span><span>Respeto</span><span>Innovación</span><span>Compromiso</span><span>Autenticidad</span><span>Perseverancia</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <p class="eyebrow">Lo Que Ofrecemos</p>
+    <h2 class="title">Portafolio de Servicios</h2>
+    <div class="grid g3">
+      <div class="card"><div class="num">01</div><h3>Producción Musical & Beats</h3><p>Composición, arreglos y creación de instrumentalizaciones/beats exclusivas para géneros urbanos y pop.</p></div>
+      <div class="card"><div class="num">02</div><h3>Grabación & Edición</h3><p>Captura vocal e instrumental en entorno condicionado con procesamiento digital de alta resolución.</p></div>
+      <div class="card"><div class="num">03</div><h3>Mezcla & Masterización</h3><p>Tratamiento de audio con estándares de competencia industrial para plataformas como Spotify y Apple Music.</p></div>
+      <div class="card"><div class="num">04</div><h3>Distribución Digital</h3><p>Gestión, empaquetado y subida estratégica de proyectos sonoros a plataformas globales de streaming.</p></div>
+      <div class="card"><div class="num">05</div><h3>Diseño de Imagen & Branding</h3><p>Desarrollo de portadas de álbumes/singles, identidad corporativa y presencia de marca para artistas.</p></div>
+      <div class="card"><div class="num">06</div><h3>Marketing & Asesoría</h3><p>Estrategias de lanzamiento digital, pauta publicitaria y asesoría para proyección de la carrera artística.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lanzamientos">
+  <div class="container">
+    <p class="eyebrow">Catálogo de Muestra</p>
+    <h2 class="title">Lanzamientos & Instrumentalizaciones</h2>
+    <p class="hint">Toca una tarjeta para escuchar el beat.</p>
+    <div class="grid g4">
+      
+      <article class="card release" data-beat="reggaeton" role="button" tabindex="0" aria-pressed="false" aria-label="Reproducir Fuego Nocturno"><div class="cover c1">FN<img src="images/fuego-nocturno.jpg" alt="" onerror="this.remove()"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="playbtn"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></span></div><span class="genre">Reggaetón</span><h3>Fuego Nocturno</h3><p>Beat Exclusivo Vol. 1</p><small>96 BPM · loop</small></article>
+      <article class="card release" data-beat="trap" role="button" tabindex="0" aria-pressed="false" aria-label="Reproducir Rionegro Flow"><div class="cover c2">RF<img src="images/rionegro-flow.jpg" alt="" onerror="this.remove()"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="playbtn"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></span></div><span class="genre">Trap / Drill</span><h3>Rionegro Flow</h3><p>Samuel Bedoya</p><small>140 BPM · loop</small></article>
+      <article class="card release" data-beat="afro" role="button" tabindex="0" aria-pressed="false" aria-label="Reproducir Noches de Oriente"><div class="cover c3">NO<img src="images/noches-de-oriente.jpg" alt="" onerror="this.remove()"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="playbtn"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></span></div><span class="genre">Afrobeat / Pop</span><h3>Noches de Oriente</h3><p>Simón Henao</p><small>104 BPM · loop</small></article>
+      <article class="card release" data-beat="dancehall" role="button" tabindex="0" aria-pressed="false" aria-label="Reproducir Sabor Urbano"><div class="cover c4">SU<img src="images/sabor-urbano.jpg" alt="" onerror="this.remove()"><span class="eq"><i></i><i></i><i></i><i></i></span><span class="playbtn"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></span></div><span class="genre">Dancehall</span><h3>Sabor Urbano</h3><p>Producción Especial SENA</p><small>100 BPM · loop</small></article>
+    </div>
+  </div>
+</section>
+
+<section id="artistas">
+  <div class="container">
+    <p class="eyebrow">Nuestras influencias</p>
+    <h2 class="title">Artistas que nos inspiran</h2>
+    <div class="grid g5">
+      <div class="card artist"><div class="photo">BB<img src="images/bad-bunny.jpg" alt="Bad Bunny" onerror="this.remove()"></div><h3>Bad Bunny</h3><p>Referente urbano</p></div>
+      <div class="card artist"><div class="photo">FE<img src="images/feid.jpg" alt="Feid" onerror="this.remove()"></div><h3>Feid</h3><p>Referente urbano</p></div>
+      <div class="card artist"><div class="photo">RA<img src="images/rauw-alejandro.jpg" alt="Rauw Alejandro" onerror="this.remove()"></div><h3>Rauw Alejandro</h3><p>Referente urbano</p></div>
+      <div class="card artist"><div class="photo">BL<img src="images/blessd.jpg" alt="Blessd" onerror="this.remove()"></div><h3>Blessd</h3><p>Referente urbano</p></div>
+      <div class="card artist"><div class="photo">RC<img src="images/ryan-castro.jpg" alt="Ryan Castro" onerror="this.remove()"></div><h3>Ryan Castro</h3><p>Referente urbano</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="container">
+    <p class="eyebrow">Estructura Organizacional</p>
+    <h2 class="title">Equipo Directivo Flow Factory</h2>
+    <div class="grid g2 team2">
+      <div class="card member"><div class="avatar">SB<img src="images/samuel.jpg" alt="Samuel Bedoya" onerror="this.remove()"></div><h3>Samuel Bedoya</h3><p class="role">CEO / Gerente de Marketing</p><p>Líder ejecutivo, desarrollo estratégico de marca y gestión de marketing digital del emprendimiento.</p><a href="mailto:samuelbs999@gmail.com">samuelbs999@gmail.com</a></div>
+      <div class="card member"><div class="avatar">SH<img src="images/simon.jpg" alt="Simón Henao" onerror="this.remove()"></div><h3>Simón Henao</h3><p class="role">Gerente General / RRHH</p><p>Coordinación operacional, gestión del talento humano y supervisión administrativa general.</p><a href="mailto:simonhenaoj@gmail.com">simonhenaoj@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="proyecto">
+  <div class="container">
+    <p class="eyebrow">Marco Académico e Institucional</p>
+    <h2 class="title">Proyecto Productivo SENA 2026</h2>
+    <p class="lead">Flow Factory es un proyecto formativo desarrollado en la I.E. Josefina Muñoz, en convenio con el SENA, en Rionegro, Antioquia.</p>
+    <div class="socials">
+      <a href="https://www.tiktok.com/@flowfactory.house?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://open.spotify.com/user/31zyb5akme3bunhikgzxxsnkgweu?si=RpKmhuLfRw6ubxoiQNB-9w&utm_source=copy-link" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://youtube.com/@samuelbedoya2592?si=8t5GnI08g-YWkO53" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <p class="eyebrow">Súmate al sello</p>
+    <h2 class="title">Enviar Demo</h2>
+    <form id="demo-form">
+      <input name="nombre" placeholder="Nombre artístico" required>
+      <input name="email" type="email" placeholder="Correo electrónico" required>
+      <select name="genero"><option>Reggaetón</option><option>Trap / Drill</option><option>Afrobeat / Pop</option><option>Dancehall</option><option>Otro</option></select>
+      <input name="link" type="url" placeholder="Enlace a tu demo (SoundCloud, Drive, YouTube…)" required>
+      <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea>
+      <button class="btn primary" type="submit">Enviar demo</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 Flow Factory. Todos los derechos reservados. Proyecto Formativo SENA - I.E. Josefina Muñoz.</div>
+</footer>
+
+<script>
+document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+document.getElementById('demo-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const body=`Nombre artístico: ${f.get('nombre')}\nCorreo: ${f.get('email')}\nGénero: ${f.get('genero')}\nDemo: ${f.get('link')}\n\n${f.get('mensaje')}`;
+  location.href='mailto:samuelbs999@gmail.com?subject='+encodeURIComponent('Demo - '+f.get('nombre'))+'&body='+encodeURIComponent(body);
+});
+</script>
+<script>
+/* Beats sintetizados con Web Audio API (sin archivos de audio) */
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.release'));
+  var ctx=null,comp=null,noiseBuf=null,out=null,sat=null,timer=null,active=null,step=0,nextT=0;
+  var hz=function(n){return 440*Math.pow(2,(n-69)/12);};
+
+  function init(){
+    if(!ctx){
+      ctx=new (window.AudioContext||window.webkitAudioContext)();
+      comp=ctx.createDynamicsCompressor();
+      comp.threshold.value=-14;comp.ratio.value=4;
+      comp.connect(ctx.destination);
+      var len=ctx.sampleRate;
+      noiseBuf=ctx.createBuffer(1,len,ctx.sampleRate);
+      var d=noiseBuf.getChannelData(0);
+      for(var i=0;i<len;i++)d[i]=Math.random()*2-1;
+    }
+    if(ctx.state==='suspended')ctx.resume();
+  }
+  function newBus(){
+    out=ctx.createGain();out.gain.value=.9;out.connect(comp);
+    sat=ctx.createWaveShaper();
+    var c=new Float32Array(1024);
+    for(var i=0;i<1024;i++){var x=i/512-1;c[i]=Math.tanh(x*3);}
+    sat.curve=c;sat.connect(out);
+  }
+
+  /* Instrumentos */
+  function tone(type,f0,f1,t,dur,vol){
+    var o=ctx.createOscillator(),g=ctx.createGain();
+    o.type=type;o.frequency.setValueAtTime(f0,t);
+    if(f1!==f0)o.frequency.exponentialRampToValueAtTime(f1,t+dur*.6);
+    g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g);g.connect(out);o.start(t);o.stop(t+dur+.02);
+  }
+  function noise(t,dur,vol,type,freq,q){
+    var s=ctx.createBufferSource();s.buffer=noiseBuf;
+    var f=ctx.createBiquadFilter();f.type=type;f.frequency.value=freq;f.Q.value=q||1;
+    var g=ctx.createGain();g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    s.connect(f);f.connect(g);g.connect(out);s.start(t,Math.random()*.5);s.stop(t+dur+.02);
+  }
+  function kick(t,v){v=v||1;tone('sine',160,42,t,.38,v);noise(t,.02,v*.3,'highpass',2000,1);}
+  function snare(t,v){v=v||1;noise(t,.18,v*.7,'bandpass',1900,.8);tone('triangle',200,120,t,.1,v*.5);}
+  function clap(t,v){v=v||1;[0,.012,.024].forEach(function(o){noise(t+o,.09,v*.5,'bandpass',1300,1.2);});noise(t+.03,.16,v*.4,'bandpass',1300,1.2);}
+  function hat(t,v,open){noise(t,open?.2:.045,v,'highpass',7500,.7);}
+  function rim(t,v){tone('square',1100,900,t,.03,v*.3);tone('sine',400,300,t,.05,v*.4);}
+  function conga(t,f,v){tone('sine',f,f*.7,t,.14,v);}
+  function shaker(t,v){noise(t,.05,v,'bandpass',6000,.9);}
+  function bass808(t,f,dur,v,slideTo){
+    var o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='sine';o.frequency.setValueAtTime(f,t);
+    if(slideTo)o.frequency.exponentialRampToValueAtTime(slideTo,t+dur*.8);
+    g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g);g.connect(sat);o.start(t);o.stop(t+dur+.02);
+  }
+  function pluck(t,f,dur,v,type,cut){
+    var o=ctx.createOscillator(),fl=ctx.createBiquadFilter(),g=ctx.createGain();
+    o.type=type;o.frequency.value=f;
+    fl.type='lowpass';fl.frequency.setValueAtTime(cut,t);fl.frequency.exponentialRampToValueAtTime(300,t+dur);
+    g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(fl);fl.connect(g);g.connect(out);o.start(t);o.stop(t+dur+.02);
+  }
+  function bell(t,f,dur,v){tone('sine',f,f,t,dur,v);tone('sine',f*2.01,f*2.01,t,dur*.6,v*.35);}
+  function has(a,s){return a.indexOf(s)!==-1;}
+
+  /* Patrones: cada beat tiene 16 pasos por compás y 4 compases de progresión */
+  var beats={
+    /* Reggaetón: dembow a 96 BPM, La menor */
+    reggaeton:{bpm:96,step:function(s,t,b){
+      var root=[33,29,31,28][b],ch=[[57,60,64],[53,57,60],[55,59,62],[52,55,59]][b];
+      if(s%4===0)kick(t,1);
+      if(s===3||s===11)snare(t,.85);
+      if(s===6||s===14)snare(t,.5);
+      if(s%2===0)hat(t,s%4===0?.14:.2);
+      if(s===15)hat(t,.1,true);
+      if(s===0)bass808(t,hz(root),.5,.95);
+      if(s===6)bass808(t,hz(root),.28,.8);
+      if(s===10)bass808(t,hz(root+7),.3,.8);
+      var pm={0:2,3:1,6:2,10:1,12:0};
+      if(s in pm)pluck(t,hz(ch[pm[s]]+12),.22,.15,'sawtooth',2600);
+    }},
+    /* Trap / Drill: half-time a 140 BPM, Do menor, 808 con glide y campanas */
+    trap:{bpm:140,step:function(s,t,b){
+      var root=[36,32,34,31][b],q=60/140/4;
+      var ks=b%2?[0,3,10,14]:[0,6,10];
+      if(has(ks,s))kick(t,.9);
+      if(s===8){clap(t,.9);snare(t,.5);}
+      hat(t,s%2?.09:.16);
+      if(s===6||s===7||s===14||s===15)hat(t+q/2,.1);
+      if(s===13&&b%2){hat(t+q/3,.1);hat(t+2*q/3,.1);}
+      if(s===0)bass808(t,hz(root),.95,1);
+      if(s===10)bass808(t,hz(root),.45,.9,hz(root-5));
+      if(s===14)bass808(t,hz(root+(b%2?0:3)),.2,.8);
+      var mel=[[79,77,75,72,75],[80,79,75,72,75],[77,74,77,70,74],[79,74,70,74,77]][b];
+      [0,3,6,10,12].forEach(function(st,i){if(s===st)bell(t,hz(mel[i]),.55,.13);});
+    }},
+    /* Afrobeat: 104 BPM, Sol mayor, congas y guitarras en contratiempo */
+    afro:{bpm:104,step:function(s,t,b){
+      var root=[43,40,36,38][b],ch=[[59,62,67],[59,64,67],[60,64,67],[62,66,69]][b];
+      if(has([0,6,10],s))kick(t,.9);
+      if(s===4||s===12){snare(t,.6);rim(t,.5);}
+      if(s===7||s===15)rim(t,.3);
+      shaker(t,s%4===2?.2:.1);
+      var cg={2:260,5:190,7:260,10:190,13:260,15:190};
+      if(s in cg)conga(t,cg[s],.5);
+      if(s===14)hat(t,.18,true);
+      var bs={0:0,3:0,6:7,10:0,13:5};
+      if(s in bs)bass808(t,hz(root+bs[s]),.22,.75);
+      if(has([3,7,11,14],s))ch.forEach(function(n){pluck(t,hz(n),.16,.09,'triangle',3500);});
+    }},
+    /* Dancehall: 100 BPM, La menor, rimshots y órgano en contratiempo */
+    dancehall:{bpm:100,step:function(s,t,b){
+      var root=[33,38,40,33][b],ch=[[57,60,64],[57,62,65],[59,64,67],[57,60,64]][b];
+      if(has([0,8,10],s))kick(t,1);
+      if(s===4||s===12)clap(t,.8);
+      if(has([3,6,11,14],s))rim(t,.45);
+      if(s%4===2)hat(t,.16,true);else if(s%2===0)hat(t,.1);
+      var bs={0:0,3:0,8:0,11:7};
+      if(s in bs)bass808(t,hz(root+bs[s]),(s===0||s===8)?.4:.2,.9);
+      if(s%4===2)ch.forEach(function(n){pluck(t,hz(n+12),.1,.05,'square',2500);});
+    }}
+  };
+
+  /* Reproductor */
+  function tick(){
+    var B=beats[active];
+    while(nextT<ctx.currentTime+.15){
+      B.step(step%16,nextT,Math.floor(step/16)%4);
+      nextT+=60/B.bpm/4;step++;
+    }
+  }
+  function stop(){
+    clearInterval(timer);timer=null;active=null;
+    cards.forEach(function(c){c.classList.remove('playing');c.setAttribute('aria-pressed','false');});
+    if(out){var old=out;old.gain.setTargetAtTime(0,ctx.currentTime,.03);setTimeout(function(){try{old.disconnect();}catch(e){}},400);out=null;}
+  }
+  function play(card){
+    init();stop();newBus();
+    active=card.dataset.beat;step=0;nextT=ctx.currentTime+.08;
+    card.classList.add('playing');card.setAttribute('aria-pressed','true');
+    timer=setInterval(tick,25);tick();
+  }
+  function toggle(card){card.classList.contains('playing')?stop():play(card);}
+  cards.forEach(function(c){
+    c.addEventListener('click',function(){toggle(c);});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle(c);}});
+  });
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&timer)stop();});
+})();
+
+</script>
+</body>
+</html>
